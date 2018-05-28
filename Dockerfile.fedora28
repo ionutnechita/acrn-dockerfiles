@@ -1,8 +1,8 @@
-# Build container based on CentOS 7
-FROM centos:centos7
+# Build container based on Fedora 28
+FROM fedora:28
 
-RUN yum -y update; yum clean all
-RUN yum -y install gcc \
+RUN dnf -y update && dnf clean all
+RUN dnf -y install gcc \
                    git \
                    make \
                    vim \

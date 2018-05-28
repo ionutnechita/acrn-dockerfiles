@@ -4,7 +4,7 @@
 
 This repository contains a number of Dockerfile that include
 all the build tools and dependencies to build the ACRN Project
-components, i.e. the `acrn-hypervisor` and `acrn-devicemodel`
+components, i.e. the `hypervisor`, `devicemodel` and `tools`.
 
 The workflow is pretty simple and can be summarized in these few steps:
 
@@ -33,25 +33,25 @@ $ sudo docker build -t centos7 -f Dockerfile.centos7 .
 
 ## Clone Project ACRN
 
-Follow these simple steps to clone the Project ACRN repositories
+Follow these simple steps to clone the Project ACRN repository
 ```
 $ mkdir ~/acrn
 $ cd ~/acrn
 $ git clone https://github.com/projectacrn/acrn-hypervisor
-$ git clone https://github.com/projectacrn/acrn-devicemodel
 ```
 
 ## Start the build container
 
-Use this `~/acrn` folder and pass it on to your build container:
+Use this `~/acrn/acrn-hypervisor` folder and pass it on to your build
+container:
 ```
-$ cd ~/acrn
+$ cd ~/acrn/acrn-hypervisor/
 $ sudo docker run -ti -v $PWD:/root/acrn <container-name>
 ```
 
 Using CentOS 7 again as an example, that gives us:
 ```
-$ cd ~/acrn
+$ cd ~/acrn/acrn-hypervisor/
 $ sudo docker run -ti -v $PWD:/root/acrn centos7
 ```
 
@@ -60,7 +60,7 @@ happens on a Fedora 27 host), try adding the `:z` parameter to the mount option.
 This will unlock the permission restriction (that comes from SElinux). Your
 command-line would then be:
 ```
-$ cd ~/acrn
+$ cd ~/acrn/acrn-hypervisor
 $ sudo docker run -ti -v $PWD:/root/acrn:z centos7
 ```
 
@@ -70,11 +70,14 @@ The steps above place you inside the container and give you access to
 the Project ACRN repositories you cloned earlier. You can now build any
 of the components. Here is an example:
 ```
-# cd acrn-hypervisor
+# make clean
 # make PLATFORM=uefi RELEASE=1
 ```
 
-You can do this for all build combinations and also try to build the `acrn-devicemodel`.
-All the build dependencies and tools are pre-installed in the container as well as a
-couple of useful tools (`git` and `vim`) so you can directly edit files to experiment
-from within the container.
+**Note:** `make` will build all the components in this repo such as the
+hypervisor itself, the devicemode and the tools. You can also selectively
+build these components by using their target names.
+
+You can do this for all build combinations. All the build dependencies and tools
+are pre-installed in the container as well as a couple of useful tools (`git`
+and `vim`) so you can directly edit files to experiment from within the container.

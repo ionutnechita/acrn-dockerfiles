@@ -1,4 +1,4 @@
-# Build container based on Fedora
+# Build container based on Ubuntu 16.04
 FROM ubuntu:16.04
 
 # Install dependencies.
@@ -8,6 +8,9 @@ RUN apt-get update \
                           libssl-dev \
                           libpciaccess-dev \
                           uuid-dev \
+                          libsystemd-dev \
+                          libevent-dev \
+                          libxml2-dev \
     && apt-get clean
 
 WORKDIR /root/acrn

@@ -1,4 +1,4 @@
-# Build container based on Fedora
+# Build container based on Clearlinux
 FROM clearlinux:base
 
 RUN swupd bundle-add os-clr-on-clr

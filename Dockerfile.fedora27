@@ -1,4 +1,4 @@
-# Build container based on Fedora
+# Build container based on Fedora 27
 FROM fedora:27
 
 RUN dnf -y update && dnf clean all
@@ -9,7 +9,10 @@ RUN dnf -y install gcc \
                    libuuid-devel \
                    openssl-devel \
                    libpciaccess-devel \
-                   gnu-efi-devel
+                   gnu-efi-devel \
+                   systemd-devel \
+                   libxml2-devel \
+                   libevent-devel
 
 WORKDIR /root/acrn
 
