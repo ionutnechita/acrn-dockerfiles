@@ -12,7 +12,8 @@ RUN dnf -y install gcc \
                    gnu-efi-devel \
                    systemd-devel \
                    libxml2-devel \
-                   libevent-devel
+                   libevent-devel \
+                   libusbx-devel
 
 WORKDIR /root/acrn
 
