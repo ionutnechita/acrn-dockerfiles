@@ -2,6 +2,7 @@
 FROM clearlinux:base
 
 RUN swupd bundle-add os-clr-on-clr python3-basic
+RUN swupd update -b
 
 RUN pip3 install kconfiglib
 
