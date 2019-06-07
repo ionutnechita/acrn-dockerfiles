@@ -46,11 +46,7 @@ RUN apt-get update \
     && apt-get clean
 
 # Install header files for GPIO
-RUN apt-get update \
-    && apt-get install -y openwince-include \
-    && cp /usr/include/openwince/arm/sa11x0/gpio.h /usr/include/linux/ \
-    && cp /usr/include/openwince/common.h /usr/include/ \
-    && apt-get clean
+COPY gpio.h /usr/include/linux/
 
 RUN pip3 install kconfiglib
 
