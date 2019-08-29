@@ -1,0 +1,21 @@
+# Build container based on Clearlinux
+FROM clearlinux:base
+
+RUN swupd bundle-add -b c-basic \
+			python3-basic \
+			which \
+			git \
+			devpkg-systemd \
+			devpkg-e2fsprogs \
+			devpkg-libxml2 \
+			devpkg-openssl \
+			devpkg-util-linux \
+			devpkg-libevent \
+			devpkg-libusb \
+			devpkg-libpciaccess
+
+RUN pip3 install kconfiglib
+
+WORKDIR /workspace
+
+CMD ["/bin/bash"]
