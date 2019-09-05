@@ -18,6 +18,6 @@ RUN apt-get update \
 
 RUN pip3 install kconfiglib
 
-WORKDIR /root/acrn
+WORKDIR /workspace
 
 CMD ["/bin/bash"]

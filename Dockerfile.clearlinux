@@ -5,6 +5,6 @@ RUN swupd bundle-add -b os-clr-on-clr python3-basic
 
 RUN pip3 install kconfiglib
 
-WORKDIR /root/acrn
+WORKDIR /workspace
 
 CMD ["/bin/bash"]

@@ -20,6 +20,6 @@ RUN yum -y install gcc \
 
 RUN pip3 install kconfiglib
 
-WORKDIR /root/acrn
+WORKDIR /workspace
 
 CMD ["/bin/bash"]
