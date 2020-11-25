@@ -45,13 +45,13 @@ $ git clone https://github.com/projectacrn/acrn-hypervisor
 Use this `~/acrn/acrn-hypervisor` folder and pass it on to your build container:
 ```
 $ cd ~/acrn/acrn-hypervisor
-$ sudo docker run -ti -v $PWD:/root/acrn <container-name>
+$ sudo docker run -ti -v $PWD:/workspace <container-name>
 ```
 
 Using CentOS 7 again as an example, that gives us:
 ```
 $ cd ~/acrn/acrn-hypervisor
-$ sudo docker run -ti -v $PWD:/root/acrn centos7
+$ sudo docker run -ti -v $PWD:/workspace centos7
 ```
 
 **Note:** if you encounter permission issues within the container (as it
@@ -60,28 +60,18 @@ This will unlock the permission restriction (that comes from SElinux). Your
 command-line would then be:
 ```
 $ cd ~/acrn/acrn-hypervisor
-$ sudo docker run -ti -v $PWD:/root/acrn:z centos7
+$ sudo docker run -ti -v $PWD:/workspace:z centos7
 ```
 
 ## Build the ACRN components
 
 The steps above place you inside the container and give you access to
 the Project ACRN repository you cloned earlier. You can now build any
-of the components. Here are a few examples:
-```
-# make hypervisor PLATFORM=uefi
-# make devicemodel
-# make tools
-```
-
-If you want to build it all, simply do:
-```
-# make PLATFORM=uefi
-```
+of the components. Refer to the
+[Project ACRN online documentation](https://projectacrn.github.io) for detailed
+instructions on how to build the ACRN hypervisor and related tools.
 
 You can do this for all build combinations.
-All the build dependencies and tools are pre-installed in the container as well as a
-couple of useful tools (`git` and `vim`) so you can directly edit files to experiment
-from within the container.
+All the build dependencies and
 
 The tools to build the ACRN documentation is (still) missing from these containers.
