@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 # Install dependencies.
 RUN apt-get update \
     && DEBIAN_FRONTEND="noninteractive" apt-get install -y gcc make vim git \
-                          gnu-efi \
+                          m4 \
                           libssl-dev \
                           libpciaccess-dev \
                           uuid-dev \
@@ -17,7 +17,21 @@ RUN apt-get update \
                           libblkid-dev \
                           e2fslibs-dev \
                           pkg-config \
+                          wget \
+                          libnuma-dev \
+                          liblz4-tool \
+                          flex \
+                          bison \
     && apt-get clean
+
+RUN wget https://acpica.org/sites/acpica/files/acpica-unix-20191018.tar.gz && \
+   tar zxvf acpica-unix-20191018.tar.gz && \
+   cd acpica-unix-20191018 && \
+   make clean && \
+   make iasl && \
+   cp ./generate/unix/bin/iasl /usr/sbin/ && \
+   cd ../ && \
+   rm -fr acpica-unix-20191018*
 
 RUN pip3 install kconfiglib
 
