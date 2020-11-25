@@ -1,0 +1,27 @@
+# Build container based on OpenSUSE Tumbelweed
+FROM opensuse/tumbleweed
+
+RUN zypper -n update && zypper clean -a
+RUN zypper -n install gcc \
+                   git \
+                   make \
+                   vim \
+                   findutils \
+                   libuuid-devel \
+                   openssl-devel \
+                   libpciaccess-devel \
+                   systemd-devel \
+                   libxml2-devel \
+                   libevent-devel \
+                   libusb-1_0-devel \
+                   libext2fs-devel \
+                   libblkid-devel \
+                   acpica \
+                   python3 \
+                   python3-pip
+
+RUN pip3 install kconfiglib
+
+WORKDIR /workspace
+
+CMD ["/bin/bash"]
