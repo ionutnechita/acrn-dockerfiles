@@ -1,4 +1,4 @@
-# Build container based on OpenSUSE Tumbelweed
+# Build container based on OpenSUSE Tumbleweed
 FROM opensuse/tumbleweed
 
 RUN zypper -n update && zypper clean -a
@@ -6,6 +6,7 @@ RUN zypper -n install gcc \
                    git \
                    make \
                    vim \
+                   which \
                    findutils \
                    libuuid-devel \
                    openssl-devel \
