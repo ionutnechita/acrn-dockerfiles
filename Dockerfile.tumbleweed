@@ -17,6 +17,7 @@ RUN zypper -n install gcc \
                    libusb-1_0-devel \
                    libext2fs-devel \
                    libblkid-devel \
+                   libnuma-devel \
                    acpica \
                    python3 \
                    python3-pip
