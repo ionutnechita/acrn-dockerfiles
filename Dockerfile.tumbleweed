@@ -40,7 +40,8 @@ RUN zypper -n install gcc \
                    diffutils \
                    doxygen \
                    graphviz \
-                   curl
+                   curl \
+                   net-tools
 
 RUN pip3 install kconfiglib
 # End of section installing build tools (packages)
