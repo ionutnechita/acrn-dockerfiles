@@ -1,6 +1,7 @@
 # Build container based on OpenSUSE Tumbleweed
 FROM opensuse/tumbleweed
 
+# Tools (packages) to build the ACRN hypervisor, ACRN kernel, ACRN device model, tools and doc
 RUN zypper -n update && zypper clean -a
 RUN zypper -n install gcc \
                    git \
@@ -19,10 +20,36 @@ RUN zypper -n install gcc \
                    libblkid-devel \
                    libnuma-devel \
                    acpica \
+                   xsltproc \
                    python3 \
-                   python3-pip
+                   python3-pip \
+                   python3-lxml \
+                   telemetrics-client \
+                   telemetrics-client-devel \
+                   flex \
+                   bison \
+                   cmake \
+                   make \
+                   automake \
+                   autoconf \
+                   autogen \
+                   bc \
+                   libelf-devel \
+                   htop \
+                   lz4 \
+                   diffutils \
+                   doxygen \
+                   graphviz \
+                   curl
 
 RUN pip3 install kconfiglib
+# End of section installing build tools (packages)
+
+# Additional tools (Python) to build the documentation
+RUN curl -O https://raw.githubusercontent.com/projectacrn/acrn-hypervisor/master/doc/scripts/requirements.txt && \
+        pip3 install -r requirements.txt && \
+        rm requirements.txt
+# End of documentation generation tools
 
 WORKDIR /workspace
 
